@@ -1,24 +1,75 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Cette esspace permet de décrire les infos sur ton code et de fournir les informations suplémentaire author, version etc...
+
+Les trois guillemet permete de commenter sur plusieuur lignes
+
+Ces deux lignes :
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+Sont nécéssaire pour éviter à python de buguer lors du choix de version avec python2 et d'éviter les bug du aux accent de la langue française.
+
+
+@Name : Card_game
+@Desc : A simple O.O. Card game
+parameter from each other.
+
+.. authors::
+    Boumaiza Safinez
+
+
+@Version : A-0.01
+
+@Date : 2020-05-01
+
+Détail sur commentaire :
+Les norme PEP impose un espace après un #, il est possible de combiner la segmentation pour les interpreter.
+A savoir # (Title); ## (SubTitle); ### (SubSubTitle) etc....
+
+As-tu fais des schémas de conception? 
+Je suis un peu confus sur ton process pour la premiere class
+Sinon c'est très bien!
+
+J'ai refait aussi le commentaire de ta première class pour illustrer comment commenter.
+Quelques peaufinage sur la forme des comentaire sont nécéssaire de ma part aussi mais il est important que les codes en général soit lisible pour un profane.
+
+"""
+
 # Packages import
 import random
 
 
 #Create classes
 class Card():
+    """Class to handle card and his representation
+    """
     def __init__(self, color, value):
+        """Manipulation main object
+        
+        Attributes:
+        ----------
+            -color (str) : color to pick (possible value : 'clover', 'square', 'heart', 'spades')
+            -value (str) : Value to pick (possible value : 'ace', '2', '3', '4', '5', '6', '7','8', '9', '10', 'jack', 'queen', 'king'])
+        """
         self.color = color
         self.value = value
     name_color = ['clover', 'square', 'heart', 'spades']
     #We could've used here a dictionary
-    #'None' makes each index equal to its corresponding value (avoid confusion)
+    #'None' makes each index equal to its corresponding value (avoid confusion) [Spécificité python à ces avantage de partir de 0]
     name_value = [None, 'ace', '2', '3', '4', '5', '6', '7',
-                        '8', '9', '10', 'jack', 'queen', 'king']
+                  '8', '9', '10', 'jack', 'queen', 'king'] # Norme impose cette allignement 
 # Respresent our object as a string with __str__
     def __str__(self):
+        """
+        """
          return '%s of %s' % (Card.name_value[self.value],
                               Card.name_color[self.color])
 
 ##Comparaison : use the __lt__ instead of <
     def __lt__(self, other):
+        """
+        """
         # Check the colors
         if self.color < other.color: return True
         if self.color > other.color: return False
@@ -78,7 +129,7 @@ def play_turn(turn_id):
     print(hand)
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': # Très bien ça j'espere que  tu as compris l'utilité
     deck = Deck()
     deck.mix_card()
     turn = 0
